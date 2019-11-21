@@ -1,0 +1,11 @@
+.active-radio + span {
+    border-color: var(--success) !important;
+    background: var(--success) !important;
+    opacity: 1 !important
+}
+
+.active-radio + span:before {
+    opacity: 1 !important;
+    background: white !important;
+    border-color: var(--success);
+}

@@ -1,0 +1,36 @@
+import formatDate from './../../helpers/formatDate';
+import { arrVolume } from './../../helpers/category';
+const main = {
+    isAuth: false,
+    language: 'en',
+    firstName_lastName: '',
+    category_doc: arrVolume[0].category_id,
+    number_doc: '',
+    why_issued: '',
+    when_issued: '',
+    when_issued_format: formatDate(new Date()),
+    validity: '',
+    validity_format: formatDate(new Date()),
+    document_found_id: '',
+    cmc: '',
+    phone: '',
+    phone_sended: false,
+    send_rule_phone: 'my_phone',
+    call_me: false,
+    counter_cmc: 0,
+    disabled_send_cmc: false,
+    title: '',
+    timer: 5,
+    timerCMC: 5,
+    lists: [],
+    edit:[],
+    runTimer: false,
+    preloader: false,
+    error: false,
+    table_row_id: [],
+    redirect_found: false,
+    attach_button: false,
+    authorization_through_logbook: false,
+};
+
+export default main;

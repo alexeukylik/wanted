@@ -1,0 +1,40 @@
+@define-mixin table {
+    > table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 16px;
+        background: var(--white);
+
+        & + table {
+            border-top: 1px solid #e6e6e6;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        > thead > tr > th,
+        > tbody > tr > td {
+            text-align: left;
+            font-weight: 400;
+            padding: 20px 15px 20px 15px;
+        }
+
+        > thead > tr > th {
+          color: rgba(70, 93, 104, 0.5);
+          border-bottom: 2px solid #e6e6e6;
+        }
+
+        > tbody > tr > td {
+            color: #4c4c4c;
+            border-top: 1px solid #e6e6e6;
+
+            &.placeholder {
+                font-size: 14px;
+                text-align: center;
+                color: rgba(70, 93, 104, 0.5);
+                line-height: 1.5;
+            }
+        }
+    }
+}

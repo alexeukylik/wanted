@@ -1,0 +1,238 @@
+@import 'themes.pcss';
+@import 'mixins/table.pcss';
+@import 'mixins/error.pcss';
+@import './fonts/roboto/roboto-font.css';
+@import './fonts/montserrat/montserrat.css';
+@import 'header/header.pcss';
+@import 'footer/footer.pcss';
+@import 'animations/elementFadeIn.pcss';
+@import 'animations/elementFadeOut.pcss';
+@import 'animations/spin.pcss';
+@import 'page/page.pcss';
+@import 'media.pcss';
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+}
+
+#app {
+    position: relative;
+}
+
+body {
+    background: var(--gray-light);
+}
+
+a {
+    color: var(--text-black);
+
+    &:hover {
+        color: var(--text-black)
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+.datepicker-wrap {
+    position: relative;
+
+    &:hover, &:focus {
+        svg {
+            * {
+                fill: var(--gray);
+            }
+        }
+    }
+
+    svg {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-48%);
+        pointer-events: none;
+
+        & * {
+            transition: fill .3s;
+        }
+    }
+}
+
+.table.mobile {
+    display: none;
+}
+
+.form-control.is-valid.required, .was-validated .form-control.required:valid {
+    border: 1px solid #6bc869 !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e")
+}
+
+.form-control.is-valid:not(.required), .was-validated .form-control:not(.required):valid {
+    background-image: none !important;
+    border: 1px solid #6bc869 !important;
+}
+
+.empty-feedback {
+    display: none;
+}
+
+.form-control.empty.is-invalid ~ .invalid-feedback, .was-validated .form-control.empty:invalid ~ .invalid-feedback {
+    display: none;
+}
+
+.form-control.empty.is-invalid ~ .empty-feedback, .was-validated .form-control.empty:invalid ~ .empty-feedback {
+    display: block;
+}
+
+.form-control.filled.is-invalid ~ .empty-feedback, .was-validated .form-control.filled:invalid ~ .empty-feedback {
+    display: none;
+}
+
+#root {
+    position: relative;
+}
+
+.page__wrap {
+    opacity: 1;
+    transition: 1s;
+}
+
+.page__wrap.loaded {
+    opacity: 1;
+}
+
+@media (min-width: 1200px) {
+    .picker__visible-mobile {
+        display: none !important;
+    }
+    .footer {
+        padding-right: 6rem;
+        justify-content: flex-end;
+    }
+
+    .footer__copyright {
+        margin-right: 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .picker__visible {
+        display: none !important;
+    }
+    .picker__visible-mobile {
+        display: flex !important;
+        max-width: 176px;
+    }
+    .svg__visible {
+        pointer-events: none;
+        width: 0;
+        height: 0;
+    }
+    .footer {
+        padding-right: 1rem;
+        justify-content: center;
+    }
+
+    .footer__copyright {
+        margin-right: 40px;
+    }
+
+    .footer__wrap {
+        justify-content: center;
+        margin: auto;
+    }
+
+    .footer__copyright {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    .footer__link {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+}
+
+.sms-code.form-control.is-invalid, .was-validated .sms-code.form-control:invalid {
+    border: 1px solid var(--error) !important;
+    background-image: none;
+}
+.sms-code {
+    max-width: 100px;
+    padding-right: 15px !important;
+}
+
+.datepicker-wrap input  {
+    color: var(--text-black);
+    padding: .375rem .75rem;
+    border-color: var(--gray)!important;
+}
+.datepicker-wrap input:focus  {
+    background: var(--gray-light)!important;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none;
+    border: 1px solid var(--error) !important;
+}
+
+.datepicker-wrap.date-validity input + div {
+    position: absolute;
+    top: -320px;
+    right: 0;
+    z-index: 1;
+}
+.datepicker-wrap.date-issued input + div {
+    position: absolute;
+    top: -320px;
+    left: 0;
+    z-index: 1;
+}
+
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+    border-radius: .25rem !important;
+}
+
+.alert {
+    &-window {
+        z-index: -100;
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        background: var(--error);
+        border-radius: 10px;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity .3s;
+        max-width: 90%;
+        &.show {
+            opacity: 1;
+            z-index: 100;
+        }
+    }
+    &-content {
+        background: var(--error);
+        padding: 15px 32px 15px 18px;
+        color: #fff;
+    }
+    &-close {
+        font-size: 12px;
+        font-family: cursive;
+        color: #fff;
+        position: absolute;
+        right: 12px;
+        top: 6px;
+        cursor: pointer;
+    }
+}
+
+.found-header {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
